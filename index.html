@@ -419,6 +419,234 @@
       }
     }
     
+    /* Donation Section Styles */
+    .donation-section {
+      margin-top: 80px;
+      text-align: center;
+      background-color: rgba(12, 12, 12, 0.8);
+      padding: 40px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 255, 102, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .donation-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, transparent, var(--accent), transparent);
+      animation: border-glow 3s infinite;
+    }
+    
+    .donation-icon {
+      font-size: 3rem;
+      color: var(--accent);
+      margin-bottom: 20px;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+    
+    .donation-title {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
+    }
+    
+    .donation-subtitle {
+      color: var(--text-sec);
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    
+    .donate-form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .donate-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 30px;
+      padding: 25px;
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+      border: 1px solid rgba(0, 255, 102, 0.2);
+    }
+    
+    .truemoney-logo {
+      height: 60px;
+      margin-bottom: 20px;
+    }
+    
+    .phone-number {
+      font-size: 2rem;
+      color: var(--accent);
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
+      margin-bottom: 15px;
+    }
+    
+    .copy-btn {
+      background-color: rgba(0, 255, 102, 0.2);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      margin-bottom: 20px;
+    }
+    
+    .copy-btn:hover {
+      background-color: var(--accent);
+      color: #111;
+    }
+    
+    .donate-steps {
+      text-align: left;
+      margin-top: 30px;
+    }
+    
+    .step {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 3px solid var(--accent);
+    }
+    
+    .step-number {
+      background-color: var(--accent);
+      color: #111;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    
+    .step-content {
+      color: var(--text-sec);
+    }
+    
+    .donate-amounts {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 30px 0;
+    }
+    
+    .amount-btn {
+      background-color: rgba(0, 0, 0, 0.3);
+      color: var(--text);
+      border: 1px solid rgba(0, 255, 102, 0.3);
+      padding: 15px 25px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .amount-btn:hover, .amount-btn.active {
+      background-color: var(--accent);
+      color: #111;
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 255, 102, 0.3);
+    }
+    
+    .qr-container {
+      margin: 30px 0;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .qr-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 10px;
+    }
+    
+    .qr-container:hover .qr-overlay {
+      opacity: 1;
+    }
+    
+    .qr-code {
+      width: 200px;
+      height: 200px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .qr-code::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent 40%, rgba(0, 255, 102, 0.2) 50%, transparent 60%);
+      background-size: 200% 200%;
+      animation: shine 3s infinite;
+    }
+    
+    @keyframes shine {
+      0% {
+        background-position: 200% 0;
+      }
+      100% {
+        background-position: -200% 0;
+      }
+    }
+    
+    .thank-you-msg {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: rgba(0, 255, 102, 0.1);
+      border-radius: 10px;
+      border-left: 3px solid var(--accent);
+      color: var(--text-sec);
+      text-align: left;
+      font-style: italic;
+    }
+    
     /* Responsive */
     @media (max-width: 768px) {
       .title {
@@ -435,6 +663,14 @@
       
       .img-container, .info {
         max-width: 100%;
+      }
+      
+      .phone-number {
+        font-size: 1.5rem;
+      }
+      
+      .donate-amounts {
+        flex-direction: column;
       }
     }
   </style>
@@ -491,6 +727,79 @@
       </div>
     </div>
     
+    <!-- ระบบโดเนท TrueMoney -->
+    <div id="donate" class="donation-section">
+      <div class="donation-icon">
+        <i class="fas fa-hand-holding-heart"></i>
+      </div>
+      <h2 class="donation-title">สนับสนุนพวกเรา</h2>
+      <p class="donation-subtitle">ร่วมสนับสนุนทีมพัฒนาเพื่อให้เราสามารถพัฒนาสคริปต์ที่ดียิ่งขึ้น</p>
+      
+      <div class="donate-form">
+        <div class="donate-info">
+          <img src="/api/placeholder/200/60" alt="TrueMoney Logo" class="truemoney-logo">
+          <p>โอนผ่านอั่งเปาทรูมันนี่ - เงินจะเข้าเบอร์อัตโนมัติ</p>
+          <div class="phone-number">092-647-9499</div>
+          <button id="copyPhone" class="copy-btn">
+            <i class="fas fa-copy"></i> คัดลอกเบอร์โทร
+          </button>
+          <p>หลังจากโอนเงินแล้ว ระบบจะทำการบันทึกข้อมูลการโอนโดยอัตโนมัติ</p>
+        </div>
+        
+        <div class="donate-amounts">
+          <button class="amount-btn">฿20</button>
+          <button class="amount-btn">฿50</button>
+          <button class="amount-btn">฿100</button>
+          <button class="amount-btn">฿200</button>
+          <button class="amount-btn">฿500</button>
+          <button class="amount-btn">฿1,000</button>
+        </div>
+        
+        <div class="qr-container">
+          <div class="qr-code"></div>
+          <div class="qr-overlay">
+            <p style="color: white;">แสกนเพื่อโอนเงินผ่าน TrueMoney Wallet</p>
+          </div>
+        </div>
+        
+        <div class="donate-steps">
+          <h3 style="margin-bottom: 20px; color: var(--accent);">วิธีการโดเนทผ่านอั่งเปาทรูมันนี่</h3>
+          
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              เปิดแอพ TrueMoney Wallet และเลือก "ส่งอั่งเปา"
+            </div>
+          </div>
+          
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              กรอกเบอร์ 092-647-9499 และจำนวนเงินที่ต้องการโดเนท
+            </div>
+          </div>
+          
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              ยืนยันการทำรายการ และเงินจะเข้าสู่ระบบอัตโนมัติ
+            </div>
+          </div>
+          
+          <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              หากต้องการรับของตอบแทนหรือสิทธิพิเศษ กรุณาแจ้งทีมงานผ่าน Discord หลังจากทำการโดเนท
+            </div>
+          </div>
+        </div>
+        
+        <div class="thank-you-msg">
+          <p>"ขอบคุณทุกการสนับสนุน! ทุกบาททุกสตางค์มีความหมายกับพวกเรามาก ทีมงานจะนำเงินที่ได้รับไปพัฒนาสคริปต์ใหม่ๆ และปรับปรุงระบบให้ดียิ่งขึ้น"</p>
+        </div>
+      </div>
+    </div>
+    
     <div class="testimonials">
       <h2>รีวิวจากลูกค้า</h2>
       <div class="reviews">
@@ -526,105 +835,4 @@
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
           </div>
-          <p class="review-text">"คุณภาพดีมาก ไม่มีบัค อัพเดทบ่อย คุ้มค่ากับเงินที่เสียไป ทีมงานซัพพอร์ตดีเยี่ยม"</p>
-          <div class="reviewer">NORA</div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="faq">
-      <h2>คำถามที่พบบ่อย</h2>
-      
-      <div class="faq-item">
-        <div class="faq-question">
-          สคริปต์นี้ใช้งานได้กับเซิร์ฟเวอร์อะไรได้บ้าง?
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-answer">
-          รายระเอียดสามารถ ถามใน ticket ได้เลยใน discord
-        </div>
-      </div>
-      
-      <div class="faq-item">
-        <div class="faq-question">
-          มีเเบบไหนบ้าง
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-answer">
-          1วัน,3วัน,7วัน,ตลอดชีพ
-        </div>
-      </div>
-      
-      <div class="faq-item">
-        <div class="faq-question">
-          หลังจากชำระเงินแล้วจะได้รับสคริปต์เมื่อไหร่?
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-answer">
-          หลังจากชำระเงินและแจ้งสลิป คุณจะได้รับสคริปต์ภายใน 1-5 นาที ผ่านทาง Discord หรืออีเมลที่คุณระบุไว้
-        </div>
-      </div>
-      
-      <div class="faq-item">
-        <div class="faq-question">
-          มีการพัฒนาไหม
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-answer">
-          scriptของทางเรามาการพัฒนาทุกๆ2-3สัปดาห์
-        </div>
-      </div>
-    </div>
-    <footer>
-        <div class="social-links">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-discord"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-        </div>
-        
-        <!-- เพิ่มส่วนข้อมูลผู้สร้างเว็บไซต์ -->
-        <div class="creator-info" style="margin: 20px 0; padding: 15px; background: rgba(0, 255, 102, 0.1); border-radius: 10px; display: inline-block;">
-          <p style="font-size: 16px; color: var(--accent);">
-            <i class="fas fa-code" style="margin-right: 10px;"></i>
-            เว็บนี้สร้างโดย <span style="font-weight: bold; text-shadow: 0 0 5px var(--accent);">มิวนิค</span>
-          </p>
-        </div>
-        
-        <p>&copy; 2025 BLACK OUT SCRIPTS. All Rights Reserved.</p>
-      </footer>
-    <div id="contact" class="contact" style="margin-top: 80px; text-align: center;">
-      <h2>ติดต่อเรา</h2>
-      <p style="color: var(--text-sec); margin-bottom: 30px;">สนใจสั่งซื้อหรือสอบถามข้อมูลเพิ่มเติม สามารถติดต่อเราได้ที่</p>
-      
-      <a href="https://discord.gg/yTeu5V7sNJ" class="btn" style="margin-right: 15px;">
-        <i class="fab fa-discord" style="margin-right: 10px;"></i> Discord
-      </a>
-      
-      <a href="#" class="btn" style="background-color: #25D366; margin-left: 15px;">
-        <i class="fab fa-whatsapp" style="margin-right: 10px;"></i> Line
-      </a>
-    </div>
-    
-    <footer>
-      <div class="social-links">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-discord"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-      </div>
-      <p>&copy; 2025 BLACK OUT SCRIPTS. All Rights Reserved.</p>
-    </footer>
-  </div>
-  
-  <script>
-    // FAQs Toggle
-    document.querySelectorAll('.faq-question').forEach(item => {
-      item.addEventListener('click', event => {
-        const parent = item.parentElement;
-        parent.classList.toggle('active');
-      });
-    });
-  </script>
-</body>
-</html>
+          <p class="review-text">"คุณภาพดีมาก ไม่มีบัค อัพเดทบ่อย คุ้มค่ากับเงินที่เสียไป ท
