@@ -3,318 +3,611 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>เข้าร่วมเซิร์ฟเวอร์ดิสคอร์ด</title>
+  <title>BLACK OUT SCRIPT | PREMIUM SCRIPTS</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     :root {
-      --discord-blue: #5865F2;
-      --discord-dark: #36393f;
-      --discord-darker: #2f3136;
-      --discord-light: #ffffff;
-      --discord-green: #3ba55c;
+      --main-bg: #000000;
+      --sec-bg: #0c0c0c;
+      --accent: #00ff66;
+      --accent-dark: #00cc55;
+      --text: #ffffff;
+      --text-sec: #cccccc;
     }
     
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: 'Segoe UI', 'Kanit', sans-serif;
     }
     
     body {
-      font-family: 'Whitney', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background-color: var(--discord-dark);
-      color: var(--discord-light);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      background-image: url('https://cdnjs.cloudflare.com/ajax/libs/jquery.cycle/3.0.3/jquery.cycle.all.min.js');
+      background-color: var(--main-bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7)),
+        url('https://sv1.img.in.th/7I2Xab.png');
       background-size: cover;
       background-position: center;
-      position: relative;
-      overflow: hidden;
+      background-attachment: fixed;
     }
     
-    /* เอฟเฟกต์พื้นหลังแบบเคลื่อนไหว */
-    body::before {
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+    
+    .logo-container {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .logo-glow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+      filter: blur(20px);
+      opacity: 0.3;
+      z-index: 0;
+      animation: glow 3s infinite alternate;
+    }
+    
+    @keyframes glow {
+      0% {
+        opacity: 0.2;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0.5;
+        transform: scale(1.2);
+      }
+    }
+    
+    .title {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text);
+      text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent), 0 0 30px var(--accent-dark);
+    }
+    
+    .subtitle {
+      color: var(--text-sec);
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+    }
+    
+    .accent-text {
+      color: var(--accent);
+      font-weight: bold;
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .img-container {
+      flex: 1;
+      min-width: 300px;
+      max-width: 550px;
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(0, 255, 102, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .img-container:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 40px rgba(0, 255, 102, 0.5);
+    }
+    
+    .img-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    
+    .img-container:hover img {
+      transform: scale(1.05);
+    }
+    
+    .img-container::after {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(125deg, #5865F2 0%, #57F287 25%, #FEE75C 50%, #EB459E 75%, #ED4245 100%);
-      opacity: 0.1;
-      z-index: -1;
-      animation: gradientBG 15s ease infinite;
-      background-size: 400% 400%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5));
+      pointer-events: none;
     }
     
-    @keyframes gradientBG {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
-    }
-    
-    .container {
-      max-width: 800px;
-      padding: 40px;
-      background-color: var(--discord-darker);
+    .info {
+      flex: 1;
+      min-width: 300px;
+      padding: 30px;
+      background-color: rgba(12, 12, 12, 0.8);
       border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      text-align: center;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 255, 102, 0.2);
       position: relative;
       overflow: hidden;
-      backdrop-filter: blur(5px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      z-index: 1;
     }
     
-    .logo {
-      width: 100px;
-      height: 100px;
-      margin: 0 auto 20px;
-      background-color: var(--discord-blue);
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4);
+    .info::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, transparent, var(--accent), transparent);
+      animation: border-glow 3s infinite;
     }
     
-    .logo i {
-      font-size: 50px;
-      color: white;
+    @keyframes border-glow {
+      0% {
+        opacity: 0.3;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0.3;
+      }
     }
     
-    h1 {
-      font-size: 32px;
+    h2 {
+      font-size: 2.2rem;
       margin-bottom: 20px;
-      color: white;
-      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      color: var(--accent);
+      text-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
     }
     
-    p {
-      font-size: 18px;
-      color: #dcddde;
-      margin-bottom: 30px;
-      line-height: 1.6;
+    .info p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      color: var(--text-sec);
     }
     
     .features {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
+      margin: 25px 0;
     }
     
     .feature {
-      flex: 1;
-      min-width: 200px;
-      margin: 10px;
-      padding: 20px;
-      background-color: rgba(47, 49, 54, 0.6);
-      border-radius: 10px;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    
-    .feature:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
-    }
-    
-    .feature i {
-      font-size: 28px;
-      color: var(--discord-blue);
+      display: flex;
+      align-items: center;
       margin-bottom: 15px;
     }
     
-    .feature h3 {
-      font-size: 18px;
-      margin-bottom: 10px;
+    .feature i {
+      color: var(--accent);
+      font-size: 1.3rem;
+      margin-right: 15px;
+      text-shadow: 0 0 5px var(--accent);
     }
     
-    .feature p {
-      font-size: 14px;
-      color: #b9bbbe;
-    }
-    
-    .join-btn {
-      display: inline-block;
-      padding: 15px 32px;
-      font-size: 18px;
+    .price {
+      font-size: 2.5rem;
       font-weight: bold;
-      background-color: var(--discord-blue);
-      color: white;
-      border: none;
-      border-radius: 28px;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      color: var(--accent);
+      margin: 30px 0;
+      text-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
+    }
+    
+    .price-old {
+      text-decoration: line-through;
+      color: #999;
+      font-size: 1.5rem;
+      margin-right: 15px;
+    }
+    
+    .btn {
+      display: inline-block;
+      background-color: var(--accent);
+      color: #111;
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 15px 40px;
+      border-radius: 30px;
       text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
-      z-index: 1;
-      box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(0, 255, 102, 0.5);
     }
     
-    .join-btn::before {
+    .btn::before {
       content: '';
       position: absolute;
       top: 0;
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: 0.5s;
-      z-index: -1;
+      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
+      transition: all 0.6s ease;
     }
     
-    .join-btn:hover {
-      background-color: #4752c4;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(88, 101, 242, 0.6);
+    .btn:hover {
+      background-color: var(--accent-dark);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 255, 102, 0.4);
     }
     
-    .join-btn:hover::before {
+    .btn:hover::before {
       left: 100%;
     }
     
-    .join-btn i {
-      margin-right: 10px;
+    .testimonials {
+      margin-top: 80px;
+      text-align: center;
     }
     
-    .member-count {
+    .testimonials h2 {
+      margin-bottom: 40px;
+    }
+    
+    .reviews {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
       margin-top: 30px;
-      background-color: rgba(47, 49, 54, 0.6);
+    }
+    
+    .review {
+      background-color: rgba(12, 12, 12, 0.8);
+      padding: 25px;
       border-radius: 10px;
-      padding: 15px;
+      max-width: 350px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 255, 102, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .review:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 255, 102, 0.2);
+    }
+    
+    .stars {
+      color: var(--accent);
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+    
+    .review-text {
+      font-style: italic;
+      margin-bottom: 20px;
+      color: var(--text-sec);
+    }
+    
+    .reviewer {
+      font-weight: bold;
+    }
+    
+    .faq {
+      margin-top: 80px;
+      text-align: center;
+    }
+    
+    .faq h2 {
+      margin-bottom: 40px;
+    }
+    
+    .faq-item {
+      text-align: left;
+      background-color: rgba(12, 12, 12, 0.8);
+      margin-bottom: 15px;
+      border-radius: 10px;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 255, 102, 0.1);
+    }
+    
+    .faq-question {
+      padding: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+    
+    .faq-question:hover {
+      background-color: rgba(0, 255, 102, 0.1);
+    }
+    
+    .faq-question i {
+      color: var(--accent);
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .faq-answer {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      color: var(--text-sec);
+    }
+    
+    .faq-item.active .faq-answer {
+      padding: 0 20px 20px;
+      max-height: 500px;
+    }
+    
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+    
+    footer {
+      text-align: center;
+      margin-top: 100px;
+      padding: 30px 0;
+      color: var(--text-sec);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .social-links {
+      margin: 20px 0;
+    }
+    
+    .social-links a {
       display: inline-block;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--text);
+      margin: 0 5px;
+      transition: all 0.3s ease;
     }
     
-    .member-count i {
-      color: var(--discord-green);
-      margin-right: 8px;
+    .social-links a:hover {
+      background-color: var(--accent);
+      color: #111;
+      transform: translateY(-3px);
     }
     
-    .pulser {
+    .discount-badge {
       position: absolute;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, var(--discord-blue) 0%, transparent 70%);
-      opacity: 0;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      animation: pulse 3s infinite;
+      top: 20px;
+      right: 20px;
+      background-color: var(--accent);
+      color: #111;
+      font-weight: bold;
+      padding: 5px 15px;
+      border-radius: 20px;
+      animation: pulse 2s infinite;
     }
     
     @keyframes pulse {
       0% {
-        transform: scale(0.5);
-        opacity: 0;
+        transform: scale(1);
       }
       50% {
-        opacity: 0.1;
+        transform: scale(1.05);
       }
       100% {
-        transform: scale(1.5);
-        opacity: 0;
+        transform: scale(1);
       }
     }
     
-    /* เอฟเฟกต์ฟลอตติ้ง */
-    .floating {
-      animation-name: floating;
-      animation-duration: 3s;
-      animation-iteration-count: infinite;
-      animation-timing-function: ease-in-out;
-    }
-    
-    @keyframes floating {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0px); }
-    }
-    
-    /* รองรับการแสดงผลบนมือถือ */
+    /* Responsive */
     @media (max-width: 768px) {
-      .container {
-        width: 90%;
-        padding: 30px 20px;
+      .title {
+        font-size: 2.5rem;
       }
       
-      .features {
+      .subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .content {
         flex-direction: column;
       }
       
-      h1 {
-        font-size: 28px;
-      }
-      
-      p {
-        font-size: 16px;
+      .img-container, .info {
+        max-width: 100%;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="pulser"></div>
+    <header>
+      <div class="logo-container">
+        <div class="logo-glow"></div>
+        <h1 class="title">BLACK OUT <span class="accent-text">SCRIPT</span></h1>
+      </div>
+      <p class="subtitle">ยกระดับประสบการณ์เกมของคุณด้วยสคริปต์ระดับพรีเมี่ยม</p>
+    </header>
     
-    <div class="logo floating">
-      <i class="fab fa-discord"></i>
-    </div>
-    
-    <h1>เข้าร่วมเซิร์ฟเวอร์ดิสคอร์ดของเรา!</h1>
-    <p>เชื่อมต่อ พูดคุย และแบ่งปันกับชุมชนของเรา จะรออะไรอยู่? มาร่วมสนุกกันเลย!</p>
-    
-    <div class="features">
-      <div class="feature">
-        <i class="fas fa-users"></i>
-        <h3>ชุมชนที่เป็นมิตร</h3>
-        <p>พบปะเพื่อนใหม่และสร้างความสัมพันธ์ในเซิร์ฟเวอร์ของเรา</p>
+    <div class="content">
+      <div class="img-container">
+        <img src="https://sv1.img.in.th/7I2Xab.png" alt="BLACK OUT Map Script">
+        <div class="discount-badge">ลด 30%</div>
       </div>
       
-      <div class="feature">
-        <i class="fas fa-gamepad"></i>
-        <h3>เล่นเกมด้วยกัน</h3>
-        <p>หาเพื่อนร่วมทีมและสนุกไปกับเกมโปรดของคุณ</p>
+      <div class="info">
+        <h2>BLACK OUT MAP SCRIPT</h2>
+        <p>สคริปต์แมพ BLACK OUT คุณภาพเยี่ยม ให้คุณได้เพลิดเพลินกับประสบการณ์การเล่นเกมที่เหนือระดับ ด้วยฟีเจอร์มากมายที่จะช่วยให้คุณเล่นได้อย่างเต็มประสิทธิภาพ</p>
+        
+        <div class="features">
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <div>ระบบเติมเงินอัตโนมัติรองรับทุกธนาคาร</div>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <div>อัพเดทฟรีตลอดอายุการใช้งาน</div>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <div>รองรับการใช้งานทั้งบน PC และมือถือ</div>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <div>ความปลอดภัยสูง ไม่มีการแบน</div>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <div>ซัพพอร์ตตลอด 24 ชั่วโมง</div>
+          </div>
+        </div>
+        
+        <div class="price">
+          <span class="price-old">฿3,500</span>
+          ฿2,450
+        </div>
+        
+        <a href="#contact" class="btn">สั่งซื้อเลย</a>
+      </div>
+    </div>
+    
+    <div class="testimonials">
+      <h2>รีวิวจากลูกค้า</h2>
+      <div class="reviews">
+        <div class="review">
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"สคริปต์ทำงานได้ดีมาก ไม่มีปัญหาเลย คุ้มค่ากับราคาที่จ่ายไป ระบบเงินทำงานได้ลื่นมาก!"</p>
+          <div class="reviewer">- สมชาย ก.</div>
+        </div>
+        
+        <div class="review">
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"ซื้อมาใช้หลายสคริปต์แล้ว อันนี้ดีที่สุด แอดมินใส่ใจลูกค้า ตอบคำถามเร็วมาก แนะนำเลย!"</p>
+          <div class="reviewer">- วิภา ส.</div>
+        </div>
+        
+        <div class="review">
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <p class="review-text">"คุณภาพดีมาก ไม่มีบัค อัพเดทบ่อย คุ้มค่ากับเงินที่เสียไป ทีมงานซัพพอร์ตดีเยี่ยม"</p>
+          <div class="reviewer">- อรรถพล ท.</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="faq">
+      <h2>คำถามที่พบบ่อย</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          สคริปต์นี้ใช้งานได้กับเซิร์ฟเวอร์อะไรได้บ้าง?
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          สคริปต์ BLACK OUT รองรับการทำงานบนเซิร์ฟเวอร์หลัก เช่น FiveM, Roblox และอื่นๆ สามารถปรับแต่งให้เข้ากับแพลตฟอร์มต่างๆ ได้
+        </div>
       </div>
       
-      <div class="feature">
-        <i class="fas fa-headset"></i>
-        <h3>แชทเสียงคุณภาพสูง</h3>
-        <p>พูดคุยกับเพื่อนด้วยระบบเสียงคุณภาพสูง</p>
+      <div class="faq-item">
+        <div class="faq-question">
+          มีระยะเวลาการใช้งานหรือไม่?
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          ไม่มีระยะเวลาการใช้งาน สามารถใช้ได้ตลอดชีพ และรับอัพเดทฟรีตลอดอายุการใช้งาน
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          หลังจากชำระเงินแล้วจะได้รับสคริปต์เมื่อไหร่?
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          หลังจากชำระเงินและแจ้งสลิป คุณจะได้รับสคริปต์ภายใน 5-10 นาที ผ่านทาง Discord หรืออีเมลที่คุณระบุไว้
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          มีการรับประกันหรือไม่?
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          เรามีการรับประกันความพึงพอใจ 7 วัน หากพบปัญหาที่ไม่สามารถแก้ไขได้ เรายินดีคืนเงินเต็มจำนวน
+        </div>
       </div>
     </div>
     
-    <a href="https://discord.gg/yTeu5V7sNJ" class="join-btn">
-      <i class="fab fa-discord"></i>เข้าร่วมเลย!
-    </a>
-    
-    <div class="member-count">
-      <i class="fas fa-circle"></i>สมาชิกออนไลน์ <span class="online-count">500+</span>
+    <div id="contact" class="contact" style="margin-top: 80px; text-align: center;">
+      <h2>ติดต่อเรา</h2>
+      <p style="color: var(--text-sec); margin-bottom: 30px;">สนใจสั่งซื้อหรือสอบถามข้อมูลเพิ่มเติม สามารถติดต่อเราได้ที่</p>
+      
+      <a href="https://discord.gg/yTeu5V7sNJ" class="btn" style="margin-right: 15px;">
+        <i class="fab fa-discord" style="margin-right: 10px;"></i> Discord
+      </a>
+      
+      <a href="#" class="btn" style="background-color: #25D366; margin-left: 15px;">
+        <i class="fab fa-whatsapp" style="margin-right: 10px;"></i> Line
+      </a>
     </div>
+    
+    <footer>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-discord"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+      <p>&copy; 2025 BLACK OUT SCRIPTS. All Rights Reserved.</p>
+    </footer>
   </div>
-
+  
   <script>
-    // สคริปต์แสดงผลจำนวนคนออนไลน์แบบสุ่ม (เพื่อความสมจริง)
-    function updateOnlineCount() {
-      const min = 450;
-      const max = 550;
-      const onlineCount = Math.floor(Math.random() * (max - min + 1)) + min;
-      document.querySelector('.online-count').textContent = onlineCount.toString();
-    }
-    
-    // อัพเดททุกๆ 5 วินาที
-    updateOnlineCount();
-    setInterval(updateOnlineCount, 5000);
+    // FAQs Toggle
+    document.querySelectorAll('.faq-question').forEach(item => {
+      item.addEventListener('click', event => {
+        const parent = item.parentElement;
+        parent.classList.toggle('active');
+      });
+    });
   </script>
 </body>
 </html>
